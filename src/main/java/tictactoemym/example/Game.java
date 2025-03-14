@@ -16,11 +16,20 @@ public class Game {
                 boolean endGame = false;
                 board.printBoard();
 
-                while (!endGame) {
-                  System.out.println("Player " + currentPlayer + " please enter row between 1 & 3");
-                  int row = scanner.nextInt() -1;
-                  System.out.println("Player " + currentPlayer + " please enter column between 1 & 3");
-                  int col = scanner.nextInt() -1;
+                  while (!endGame) {
+                    System.out.println("Player " + currentPlayer + " please enter row (1-3):");
+                    int row = scanner.nextInt() -1;
+                    if (row < 0 || row >= 3) {
+                      System.out.println("Invalid row, please enter a number between 1 and 3.");
+                      continue;
+                    }
+                    
+                    System.out.println("Player " + currentPlayer + " please enter column (1-3):");
+                    int col = scanner.nextInt() -1;
+                    if (col < 0 || col >= 3) {
+                      System.out.println("Invalid column, please enter a number between 1 and 3.");
+                      continue;
+                    } 
 
                   if (!board.playerTurn(row, col, currentPlayer)) {
                     System.out.println("Invalid move, please try again");
